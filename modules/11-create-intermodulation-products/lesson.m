@@ -1,0 +1,7 @@
+%% P11 - Create Intermodulation Products
+% Guiding question:
+% What inputs, observable effects, and failure modes matter when you create Intermodulation Products?
+%
+% This lesson is scaffolded and intentionally refuses to masquerade as
+% implemented instruction.
+error('P11 is scaffolded. Implement model.m, experiment.m, interactive.m, and checks first.');

@@ -1,0 +1,46 @@
+{
+  "phases": [
+    {
+      "phase": 1,
+      "title": "Waves and impedance",
+      "module_start": 1,
+      "module_end": 4,
+      "learning_goal": "Build visible, manipulable intuition for waves and impedance."
+    },
+    {
+      "phase": 2,
+      "title": "Network analysis",
+      "module_start": 5,
+      "module_end": 8,
+      "learning_goal": "Build visible, manipulable intuition for network analysis."
+    },
+    {
+      "phase": 3,
+      "title": "Active and nonlinear devices",
+      "module_start": 9,
+      "module_end": 12,
+      "learning_goal": "Build visible, manipulable intuition for active and nonlinear devices."
+    },
+    {
+      "phase": 4,
+      "title": "Frequency conversion and IQ",
+      "module_start": 13,
+      "module_end": 16,
+      "learning_goal": "Build visible, manipulable intuition for frequency conversion and iq."
+    },
+    {
+      "phase": 5,
+      "title": "Antennas and propagation",
+      "module_start": 17,
+      "module_end": 20,
+      "learning_goal": "Build visible, manipulable intuition for antennas and propagation."
+    },
+    {
+      "phase": 6,
+      "title": "Integrated RF labs",
+      "module_start": 21,
+      "module_end": 24,
+      "learning_goal": "Build visible, manipulable intuition for integrated rf labs."
+    }
+  ]
+}

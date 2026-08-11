@@ -1,0 +1,408 @@
+{
+  "schema_version": 1,
+  "product": "rf-lab-learning",
+  "title": "RF and Microwave Measurement",
+  "purpose": "Build physical intuition for impedance, waves, gain, noise, mixing, antennas, calibration, and RF fault isolation.",
+  "module_count": 24,
+  "progression_rule": "Complete modules in order until the first six are complete; later modules may be selected when their prerequisites are met.",
+  "interaction_contract": {
+    "environment": "MATLAB",
+    "notebook_format": "MATLAB scripts with %% Live Editor cells",
+    "lever_ui": "uifigure controls",
+    "required_sweeps": 2,
+    "required_broken_cases": 1,
+    "randomness": "seeded",
+    "base_matlab_preferred": true,
+    "learning_cycle": [
+      "read",
+      "visualize-baseline",
+      "move-one-lever",
+      "visualize-delta",
+      "read-and-explain"
+    ]
+  },
+  "modules": [
+    {
+      "number": 1,
+      "id": "P01",
+      "title": "See Reflection and VSWR Along a Transmission Line",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you see Reflection and VSWR Along a Transmission Line?",
+      "phase": 1,
+      "phase_title": "Waves and impedance",
+      "slug": "see-reflection-and-vswr-along-a-transmission-line",
+      "folder": "modules/01-see-reflection-and-vswr-along-a-transmission-line",
+      "status": "implemented",
+      "implementation_batch": "P01",
+      "prerequisites": [],
+      "evidence_level": "simulated"
+    },
+    {
+      "number": 2,
+      "id": "P02",
+      "title": "Convert Power and Voltage into Decibels",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you convert Power and Voltage into Decibels?",
+      "phase": 1,
+      "phase_title": "Waves and impedance",
+      "slug": "convert-power-and-voltage-into-decibels",
+      "folder": "modules/02-convert-power-and-voltage-into-decibels",
+      "status": "scaffolded",
+      "implementation_batch": "P02",
+      "prerequisites": [
+        "P01"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 3,
+      "id": "P03",
+      "title": "Match a Load to a Source",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you match a Load to a Source?",
+      "phase": 1,
+      "phase_title": "Waves and impedance",
+      "slug": "match-a-load-to-a-source",
+      "folder": "modules/03-match-a-load-to-a-source",
+      "status": "scaffolded",
+      "implementation_batch": "P03",
+      "prerequisites": [
+        "P02"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 4,
+      "id": "P04",
+      "title": "Relate Electrical Length to Phase",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you relate Electrical Length to Phase?",
+      "phase": 1,
+      "phase_title": "Waves and impedance",
+      "slug": "relate-electrical-length-to-phase",
+      "folder": "modules/04-relate-electrical-length-to-phase",
+      "status": "scaffolded",
+      "implementation_batch": "P04",
+      "prerequisites": [
+        "P03"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 5,
+      "id": "P05",
+      "title": "Interpret S-Parameters",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you interpret S-Parameters?",
+      "phase": 2,
+      "phase_title": "Network analysis",
+      "slug": "interpret-s-parameters",
+      "folder": "modules/05-interpret-s-parameters",
+      "status": "scaffolded",
+      "implementation_batch": "P05",
+      "prerequisites": [
+        "P04"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 6,
+      "id": "P06",
+      "title": "Calibrate a VNA Measurement",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you calibrate a VNA Measurement?",
+      "phase": 2,
+      "phase_title": "Network analysis",
+      "slug": "calibrate-a-vna-measurement",
+      "folder": "modules/06-calibrate-a-vna-measurement",
+      "status": "scaffolded",
+      "implementation_batch": "P06",
+      "prerequisites": [
+        "P05"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 7,
+      "id": "P07",
+      "title": "De-Embed a Cable or Fixture",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you de-Embed a Cable or Fixture?",
+      "phase": 2,
+      "phase_title": "Network analysis",
+      "slug": "de-embed-a-cable-or-fixture",
+      "folder": "modules/07-de-embed-a-cable-or-fixture",
+      "status": "scaffolded",
+      "implementation_batch": "P07",
+      "prerequisites": [
+        "P06"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 8,
+      "id": "P08",
+      "title": "Measure Filter Bandwidth and Rejection",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you measure Filter Bandwidth and Rejection?",
+      "phase": 2,
+      "phase_title": "Network analysis",
+      "slug": "measure-filter-bandwidth-and-rejection",
+      "folder": "modules/08-measure-filter-bandwidth-and-rejection",
+      "status": "scaffolded",
+      "implementation_batch": "P08",
+      "prerequisites": [
+        "P07"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 9,
+      "id": "P09",
+      "title": "Measure Gain and Compression",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you measure Gain and Compression?",
+      "phase": 3,
+      "phase_title": "Active and nonlinear devices",
+      "slug": "measure-gain-and-compression",
+      "folder": "modules/09-measure-gain-and-compression",
+      "status": "scaffolded",
+      "implementation_batch": "P09",
+      "prerequisites": [
+        "P08"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 10,
+      "id": "P10",
+      "title": "Build a Noise-Figure Budget",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you build a Noise-Figure Budget?",
+      "phase": 3,
+      "phase_title": "Active and nonlinear devices",
+      "slug": "build-a-noise-figure-budget",
+      "folder": "modules/10-build-a-noise-figure-budget",
+      "status": "scaffolded",
+      "implementation_batch": "P10",
+      "prerequisites": [
+        "P09"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 11,
+      "id": "P11",
+      "title": "Create Intermodulation Products",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you create Intermodulation Products?",
+      "phase": 3,
+      "phase_title": "Active and nonlinear devices",
+      "slug": "create-intermodulation-products",
+      "folder": "modules/11-create-intermodulation-products",
+      "status": "scaffolded",
+      "implementation_batch": "P11",
+      "prerequisites": [
+        "P10"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 12,
+      "id": "P12",
+      "title": "See Phase Noise Around a Carrier",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you see Phase Noise Around a Carrier?",
+      "phase": 3,
+      "phase_title": "Active and nonlinear devices",
+      "slug": "see-phase-noise-around-a-carrier",
+      "folder": "modules/12-see-phase-noise-around-a-carrier",
+      "status": "scaffolded",
+      "implementation_batch": "P12",
+      "prerequisites": [
+        "P11"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 13,
+      "id": "P13",
+      "title": "Mix RF to an Intermediate Frequency",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you mix RF to an Intermediate Frequency?",
+      "phase": 4,
+      "phase_title": "Frequency conversion and IQ",
+      "slug": "mix-rf-to-an-intermediate-frequency",
+      "folder": "modules/13-mix-rf-to-an-intermediate-frequency",
+      "status": "scaffolded",
+      "implementation_batch": "P13",
+      "prerequisites": [
+        "P12"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 14,
+      "id": "P14",
+      "title": "Find Images and LO Leakage",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you find Images and LO Leakage?",
+      "phase": 4,
+      "phase_title": "Frequency conversion and IQ",
+      "slug": "find-images-and-lo-leakage",
+      "folder": "modules/14-find-images-and-lo-leakage",
+      "status": "scaffolded",
+      "implementation_batch": "P14",
+      "prerequisites": [
+        "P13"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 15,
+      "id": "P15",
+      "title": "Inject IQ Gain and Phase Error",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you inject IQ Gain and Phase Error?",
+      "phase": 4,
+      "phase_title": "Frequency conversion and IQ",
+      "slug": "inject-iq-gain-and-phase-error",
+      "folder": "modules/15-inject-iq-gain-and-phase-error",
+      "status": "scaffolded",
+      "implementation_batch": "P15",
+      "prerequisites": [
+        "P14"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 16,
+      "id": "P16",
+      "title": "Lock a Synthesizer to a Reference",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you lock a Synthesizer to a Reference?",
+      "phase": 4,
+      "phase_title": "Frequency conversion and IQ",
+      "slug": "lock-a-synthesizer-to-a-reference",
+      "folder": "modules/16-lock-a-synthesizer-to-a-reference",
+      "status": "scaffolded",
+      "implementation_batch": "P16",
+      "prerequisites": [
+        "P15"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 17,
+      "id": "P17",
+      "title": "Plot an Antenna Pattern",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you plot an Antenna Pattern?",
+      "phase": 5,
+      "phase_title": "Antennas and propagation",
+      "slug": "plot-an-antenna-pattern",
+      "folder": "modules/17-plot-an-antenna-pattern",
+      "status": "scaffolded",
+      "implementation_batch": "P17",
+      "prerequisites": [
+        "P16"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 18,
+      "id": "P18",
+      "title": "See Polarization Mismatch",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you see Polarization Mismatch?",
+      "phase": 5,
+      "phase_title": "Antennas and propagation",
+      "slug": "see-polarization-mismatch",
+      "folder": "modules/18-see-polarization-mismatch",
+      "status": "scaffolded",
+      "implementation_batch": "P18",
+      "prerequisites": [
+        "P17"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 19,
+      "id": "P19",
+      "title": "Build a Link Budget",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you build a Link Budget?",
+      "phase": 5,
+      "phase_title": "Antennas and propagation",
+      "slug": "build-a-link-budget",
+      "folder": "modules/19-build-a-link-budget",
+      "status": "scaffolded",
+      "implementation_batch": "P19",
+      "prerequisites": [
+        "P18"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 20,
+      "id": "P20",
+      "title": "Model Fading and Multipath",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you model Fading and Multipath?",
+      "phase": 5,
+      "phase_title": "Antennas and propagation",
+      "slug": "model-fading-and-multipath",
+      "folder": "modules/20-model-fading-and-multipath",
+      "status": "scaffolded",
+      "implementation_batch": "P20",
+      "prerequisites": [
+        "P19"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 21,
+      "id": "P21",
+      "title": "Use Couplers and Pads Intentionally",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you use Couplers and Pads Intentionally?",
+      "phase": 6,
+      "phase_title": "Integrated RF labs",
+      "slug": "use-couplers-and-pads-intentionally",
+      "folder": "modules/21-use-couplers-and-pads-intentionally",
+      "status": "scaffolded",
+      "implementation_batch": "P21",
+      "prerequisites": [
+        "P20"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 22,
+      "id": "P22",
+      "title": "Make a Coherent Two-Channel Measurement",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you make a Coherent Two-Channel Measurement?",
+      "phase": 6,
+      "phase_title": "Integrated RF labs",
+      "slug": "make-a-coherent-two-channel-measurement",
+      "folder": "modules/22-make-a-coherent-two-channel-measurement",
+      "status": "scaffolded",
+      "implementation_batch": "P22",
+      "prerequisites": [
+        "P21"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 23,
+      "id": "P23",
+      "title": "Trace an SDR RF Chain",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you trace an SDR RF Chain?",
+      "phase": 6,
+      "phase_title": "Integrated RF labs",
+      "slug": "trace-an-sdr-rf-chain",
+      "folder": "modules/23-trace-an-sdr-rf-chain",
+      "status": "scaffolded",
+      "implementation_batch": "P23",
+      "prerequisites": [
+        "P22"
+      ],
+      "evidence_level": "none"
+    },
+    {
+      "number": 24,
+      "id": "P24",
+      "title": "Isolate a Fault Across an RF Path",
+      "guiding_question": "What inputs, observable effects, and failure modes matter when you isolate a Fault Across an RF Path?",
+      "phase": 6,
+      "phase_title": "Integrated RF labs",
+      "slug": "isolate-a-fault-across-an-rf-path",
+      "folder": "modules/24-isolate-a-fault-across-an-rf-path",
+      "status": "scaffolded",
+      "implementation_batch": "P24",
+      "prerequisites": [
+        "P23"
+      ],
+      "evidence_level": "none"
+    }
+  ]
+}
