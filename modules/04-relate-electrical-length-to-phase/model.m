@@ -1,0 +1,69 @@
+function out = model(frequencyHz,physicalLengthM,velocityFactor)
+%MODEL Relate physical length, propagation delay, and electrical phase.
+%   The model is an ideal matched, lossless, nondispersive transmission
+%   path. With the exp(+j*omega*t) convention, a forward wave has transfer
+%   H = exp(-j*beta*l), so positive electrical length produces negative
+%   through phase. Inputs are scalar and bounded to keep phase arithmetic
+%   finite and meaningful across a broad teaching envelope.
+arguments
+    frequencyHz (1,1) double {mustBeReal,mustBeFinite,mustBeGreaterThanOrEqual(frequencyHz,1e3),mustBeLessThanOrEqual(frequencyHz,1e11)} = 1e9
+    physicalLengthM (1,1) double {mustBeReal,mustBeFinite,mustBeNonnegative,mustBeLessThanOrEqual(physicalLengthM,1e3)} = 0.04946575557
+    velocityFactor (1,1) double {mustBeReal,mustBeFinite,mustBeGreaterThanOrEqual(velocityFactor,0.1),mustBeLessThanOrEqual(velocityFactor,1)} = 0.66
+end
+
+speedOfLightMps = 299792458;
+phaseVelocityMps = velocityFactor*speedOfLightMps;
+wavelengthM = phaseVelocityMps/frequencyHz;
+propagationDelayS = physicalLengthM/phaseVelocityMps;
+
+electricalCycles = frequencyHz*propagationDelayS;
+electricalLengthRad = 2*pi*electricalCycles;
+electricalLengthDeg = 360*electricalCycles;
+unwrappedTransferPhaseDeg = -electricalLengthDeg;
+transferPhasor = exp(-1j*electricalLengthRad);
+transferMagnitude = abs(transferPhasor);
+
+% A wrapped phase retains position within one cycle but discards how many
+% complete guided wavelengths fit in the path. Snap only roundoff-sized
+% residues at exact cycle boundaries so a full wavelength maps to 0 deg.
+cycleToleranceDeg = 64*eps(max(1,abs(electricalLengthDeg)));
+principalElectricalLengthDeg = mod(electricalLengthDeg,360);
+if principalElectricalLengthDeg < cycleToleranceDeg || ...
+        360-principalElectricalLengthDeg < cycleToleranceDeg
+    principalElectricalLengthDeg = 0;
+end
+wrappedTransferPhaseDeg = mod(-principalElectricalLengthDeg+180,360)-180;
+phaseEquivalentLengthM = principalElectricalLengthDeg/360*wavelengthM;
+
+roundTripElectricalLengthDeg = 2*electricalLengthDeg;
+roundTripToleranceDeg = 64*eps(max(1,abs(roundTripElectricalLengthDeg)));
+principalRoundTripDeg = mod(roundTripElectricalLengthDeg,360);
+if principalRoundTripDeg < roundTripToleranceDeg || ...
+        360-principalRoundTripDeg < roundTripToleranceDeg
+    principalRoundTripDeg = 0;
+end
+unwrappedRoundTripPhaseDeg = -roundTripElectricalLengthDeg;
+wrappedRoundTripPhaseDeg = mod(-principalRoundTripDeg+180,360)-180;
+phaseSlopeDegPerHz = -360*propagationDelayS;
+
+out = struct( ...
+    'speedOfLightMps',speedOfLightMps, ...
+    'frequencyHz',frequencyHz, ...
+    'physicalLengthM',physicalLengthM, ...
+    'velocityFactor',velocityFactor, ...
+    'phaseVelocityMps',phaseVelocityMps, ...
+    'wavelengthM',wavelengthM, ...
+    'propagationDelayS',propagationDelayS, ...
+    'electricalCycles',electricalCycles, ...
+    'electricalLengthRad',electricalLengthRad, ...
+    'electricalLengthDeg',electricalLengthDeg, ...
+    'unwrappedTransferPhaseDeg',unwrappedTransferPhaseDeg, ...
+    'wrappedTransferPhaseDeg',wrappedTransferPhaseDeg, ...
+    'transferPhasor',transferPhasor, ...
+    'transferMagnitude',transferMagnitude, ...
+    'principalElectricalLengthDeg',principalElectricalLengthDeg, ...
+    'phaseEquivalentLengthM',phaseEquivalentLengthM, ...
+    'unwrappedRoundTripPhaseDeg',unwrappedRoundTripPhaseDeg, ...
+    'wrappedRoundTripPhaseDeg',wrappedRoundTripPhaseDeg, ...
+    'phaseSlopeDegPerHz',phaseSlopeDegPerHz);
+end

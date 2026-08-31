@@ -22,6 +22,7 @@ From a shell:
 ./bin/learn start P01
 ./bin/learn start P02
 ./bin/learn start P03
+./bin/learn start P04
 ./bin/learn list
 ./bin/learn status
 ```
@@ -38,15 +39,25 @@ In MATLAB:
 launch_lesson("P01")
 launch_lesson("P02")
 launch_lesson("P03")
+launch_lesson("P04")
 run_module_checks("P01")
 run_module_checks("P02")
 run_module_checks("P03")
+run_module_checks("P04")
 ```
 
-`P01` is the reference implementation. `P02` and `P03` are governed follow-on lessons covering
-decibels and conjugate source/load matching. The `status` field in `curriculum/modules.json` is the
-current source of truth: implemented modules are runnable, while scaffolded modules remain
-intentionally non-runnable until their bounded batch is verified.
+After a module's MATLAB checks pass and the learner gives a short teach-back, record completion with
+an explicit attestation:
+
+```bash
+./bin/learn complete P04 --checks-passed --teach-back "<your explanation>"
+```
+
+`P01` is the reference implementation. `P02` through `P04` are governed follow-on lessons covering
+decibels, conjugate source/load matching, and the relationship between electrical length and phase.
+The `status` field in `curriculum/modules.json` is the current source of truth: implemented modules
+are runnable, while scaffolded modules remain intentionally non-runnable until their bounded batch
+is verified.
 
 ## Module layout
 
