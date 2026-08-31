@@ -45,12 +45,12 @@
       "phase_title": "Waves and impedance",
       "slug": "convert-power-and-voltage-into-decibels",
       "folder": "modules/02-convert-power-and-voltage-into-decibels",
-      "status": "scaffolded",
+      "status": "implemented",
       "implementation_batch": "P02",
       "prerequisites": [
         "P01"
       ],
-      "evidence_level": "none"
+      "evidence_level": "simulated"
     },
     {
       "number": 3,

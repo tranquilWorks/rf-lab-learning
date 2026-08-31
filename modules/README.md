@@ -7,7 +7,7 @@ reviewable implementation batch. `implemented` means the complete learner slice 
 | Batch | Phase | Module | Guiding question | Status |
 | --- | --- | --- | --- | --- |
 | P01 | 1: Waves and impedance | [See Reflection and VSWR Along a Transmission Line](../modules/01-see-reflection-and-vswr-along-a-transmission-line/README.md) | What inputs, observable effects, and failure modes matter when you see Reflection and VSWR Along a Transmission Line? | implemented |
-| P02 | 1: Waves and impedance | [Convert Power and Voltage into Decibels](../modules/02-convert-power-and-voltage-into-decibels/README.md) | What inputs, observable effects, and failure modes matter when you convert Power and Voltage into Decibels? | scaffolded |
+| P02 | 1: Waves and impedance | [Convert Power and Voltage into Decibels](../modules/02-convert-power-and-voltage-into-decibels/README.md) | What inputs, observable effects, and failure modes matter when you convert Power and Voltage into Decibels? | implemented |
 | P03 | 1: Waves and impedance | [Match a Load to a Source](../modules/03-match-a-load-to-a-source/README.md) | What inputs, observable effects, and failure modes matter when you match a Load to a Source? | scaffolded |
 | P04 | 1: Waves and impedance | [Relate Electrical Length to Phase](../modules/04-relate-electrical-length-to-phase/README.md) | What inputs, observable effects, and failure modes matter when you relate Electrical Length to Phase? | scaffolded |
 | P05 | 2: Network analysis | [Interpret S-Parameters](../modules/05-interpret-s-parameters/README.md) | What inputs, observable effects, and failure modes matter when you interpret S-Parameters? | scaffolded |
