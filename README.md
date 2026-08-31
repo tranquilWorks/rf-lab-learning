@@ -20,6 +20,7 @@ From a shell:
 ```bash
 ./bin/learn start
 ./bin/learn start P01
+./bin/learn start P02
 ./bin/learn list
 ./bin/learn status
 ```
@@ -34,10 +35,15 @@ In MATLAB:
 
 ```matlab
 launch_lesson("P01")
+launch_lesson("P02")
 run_module_checks("P01")
+run_module_checks("P02")
 ```
 
-`P01` is a complete reference implementation. The remaining modules are intentionally scaffolded so each can be implemented in a bounded, reviewable batch.
+`P01` is the reference implementation and `P02` is the first governed follow-on lesson. The
+`status` field in `curriculum/modules.json` is the current source of truth: implemented modules are
+runnable, while scaffolded modules remain intentionally non-runnable until their bounded batch is
+verified.
 
 ## Module layout
 
