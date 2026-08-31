@@ -61,12 +61,12 @@
       "phase_title": "Waves and impedance",
       "slug": "match-a-load-to-a-source",
       "folder": "modules/03-match-a-load-to-a-source",
-      "status": "scaffolded",
+      "status": "implemented",
       "implementation_batch": "P03",
       "prerequisites": [
         "P02"
       ],
-      "evidence_level": "none"
+      "evidence_level": "simulated"
     },
     {
       "number": 4,
