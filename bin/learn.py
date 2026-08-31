@@ -94,10 +94,21 @@ def cmd_complete(args):
     module = resolve_module(manifest, args.module)
     if module["status"] != "implemented":
         raise SystemExit("Cannot complete a scaffolded module.")
+    teach_back = args.teach_back.strip()
+    if not args.checks_passed or not teach_back:
+        print(f"Cannot mark {module['id']} complete yet.")
+        if not args.checks_passed:
+            print(f"Run in MATLAB: run_module_checks('{module['id']}')")
+        if not teach_back:
+            print("Give a short teach-back covering the mechanism and a failure mode.")
+        print(
+            f"Then rerun: ./bin/learn complete {module['id']} --checks-passed "
+            '--teach-back "<your explanation>"'
+        )
+        return 2
     state = load_state()
     state.setdefault("completed", {})[module["id"]] = True
-    if args.note:
-        state.setdefault("notes", {})[module["id"]] = args.note
+    state.setdefault("notes", {})[module["id"]] = teach_back
     state["current"] = module["id"]
     save_state(state)
     print(f"Marked {module['id']} complete.")
@@ -119,7 +130,21 @@ def main():
     p = sub.add_parser("continue"); p.set_defaults(func=cmd_continue)
     p = sub.add_parser("list"); p.set_defaults(func=cmd_list)
     p = sub.add_parser("status"); p.set_defaults(func=cmd_status)
-    p = sub.add_parser("complete"); p.add_argument("module"); p.add_argument("--note", default=""); p.set_defaults(func=cmd_complete)
+    p = sub.add_parser("complete")
+    p.add_argument("module")
+    p.add_argument(
+        "--checks-passed",
+        action="store_true",
+        help="attest that run_module_checks completed successfully",
+    )
+    p.add_argument(
+        "--teach-back",
+        "--note",
+        dest="teach_back",
+        default="",
+        help="record the learner's short mechanism-and-failure explanation",
+    )
+    p.set_defaults(func=cmd_complete)
     p = sub.add_parser("check"); p.add_argument("module", nargs="?"); p.set_defaults(func=cmd_check)
     args = parser.parse_args()
     raise SystemExit(args.func(args))

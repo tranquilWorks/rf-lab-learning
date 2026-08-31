@@ -7,7 +7,7 @@ tutor mode, while scaffolded modules refuse to masquerade as finished lessons. A
 follows read → visualize → move one lever → visualize the change → read/explain, then a broken case,
 checks, and teach-back.
 
-P01, P02, and P03 are implemented learning slices. P03 connects P01's impedance/reflection view to
-P02's power-ratio decibels through conjugate source/load matching.
+P01 through P04 are implemented learning slices. P04 starts from P03's matched boundary, then makes
+one-way propagation delay, electrical length, unwrapped phase, and wrapped-phase ambiguity visible.
 
 Use `docs/CURRICULUM_AUDIT.md` for the complete phase and batch map.

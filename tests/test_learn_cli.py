@@ -98,6 +98,53 @@ class LearnCliTests(unittest.TestCase):
             state = json.loads((fixture / ".learning/progress.json").read_text(encoding="utf-8"))
             self.assertEqual(state["current"], "P02")
 
+    def test_completion_requires_checks_and_teach_back_before_state_mutation(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            fixture = self.make_fixture(temporary)
+            started = self.run_cli_in_fixture(fixture, "start", "P04")
+            self.assertEqual(started.returncode, 0, started.stderr)
+
+            teach_back = (
+                "Length sets delay and phase with frequency and velocity; a wrapped phase can "
+                "hide complete cycles."
+            )
+            blocked_cases = (
+                ((), "run_module_checks('P04')", "short teach-back"),
+                (("--checks-passed",), None, "short teach-back"),
+                (("--teach-back", teach_back), "run_module_checks('P04')", None),
+            )
+            for extra_args, required_prompt, omitted_prompt in blocked_cases:
+                with self.subTest(blocked_completion=extra_args):
+                    blocked = self.run_cli_in_fixture(
+                        fixture, "complete", "P04", *extra_args
+                    )
+                    self.assertEqual(blocked.returncode, 2, blocked.stderr)
+                    if required_prompt is not None:
+                        self.assertIn(required_prompt, blocked.stdout)
+                    if omitted_prompt is not None:
+                        self.assertIn(omitted_prompt, blocked.stdout)
+                    blocked_state = json.loads(
+                        (fixture / ".learning/progress.json").read_text(encoding="utf-8")
+                    )
+                    self.assertNotIn("P04", blocked_state["completed"])
+
+            completed = self.run_cli_in_fixture(
+                fixture,
+                "complete",
+                "P04",
+                "--checks-passed",
+                "--teach-back",
+                teach_back,
+            )
+            self.assertEqual(completed.returncode, 0, completed.stderr)
+            self.assertEqual(completed.stdout, "Marked P04 complete.\n")
+            completed_state = json.loads(
+                (fixture / ".learning/progress.json").read_text(encoding="utf-8")
+            )
+            self.assertTrue(completed_state["completed"]["P04"])
+            self.assertEqual(completed_state["notes"]["P04"], teach_back)
+            self.assertEqual(completed_state["current"], "P04")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -77,12 +77,12 @@
       "phase_title": "Waves and impedance",
       "slug": "relate-electrical-length-to-phase",
       "folder": "modules/04-relate-electrical-length-to-phase",
-      "status": "scaffolded",
+      "status": "implemented",
       "implementation_batch": "P04",
       "prerequisites": [
         "P03"
       ],
-      "evidence_level": "none"
+      "evidence_level": "simulated"
     },
     {
       "number": 5,
