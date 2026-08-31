@@ -21,6 +21,7 @@ From a shell:
 ./bin/learn start
 ./bin/learn start P01
 ./bin/learn start P02
+./bin/learn start P03
 ./bin/learn list
 ./bin/learn status
 ```
@@ -36,14 +37,16 @@ In MATLAB:
 ```matlab
 launch_lesson("P01")
 launch_lesson("P02")
+launch_lesson("P03")
 run_module_checks("P01")
 run_module_checks("P02")
+run_module_checks("P03")
 ```
 
-`P01` is the reference implementation and `P02` is the first governed follow-on lesson. The
-`status` field in `curriculum/modules.json` is the current source of truth: implemented modules are
-runnable, while scaffolded modules remain intentionally non-runnable until their bounded batch is
-verified.
+`P01` is the reference implementation. `P02` and `P03` are governed follow-on lessons covering
+decibels and conjugate source/load matching. The `status` field in `curriculum/modules.json` is the
+current source of truth: implemented modules are runnable, while scaffolded modules remain
+intentionally non-runnable until their bounded batch is verified.
 
 ## Module layout
 

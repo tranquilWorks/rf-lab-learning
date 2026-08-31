@@ -54,23 +54,27 @@ class LearnCliTests(unittest.TestCase):
         self.assertEqual(listing.returncode, 0, listing.stderr)
         self.assertEqual(len([line for line in listing.stdout.splitlines() if line.strip()]), 24)
 
-    def test_implemented_modules_start_and_current_scaffold_refuses(self):
-        reference = self.run_cli("start", "P01")
-        self.assertEqual(reference.returncode, 0, reference.stderr)
-        self.assertIn("Guiding question:", reference.stdout)
+    def test_every_implemented_module_starts_and_current_scaffold_refuses(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            fixture = self.make_fixture(temporary)
+            implemented = [
+                module for module in self.manifest["modules"] if module["status"] == "implemented"
+            ]
+            for module in implemented:
+                with self.subTest(module=module["id"]):
+                    started = self.run_cli_in_fixture(fixture, "start", module["id"])
+                    self.assertEqual(started.returncode, 0, started.stderr)
+                    self.assertIn("Guiding question:", started.stdout)
+                    self.assertIn(module["title"], started.stdout)
 
-        p02 = self.run_cli("start", "P02")
-        self.assertEqual(p02.returncode, 0, p02.stderr)
-        self.assertIn("Convert Power and Voltage into Decibels", p02.stdout)
-
-        scaffolded = next(
-            (module for module in self.manifest["modules"] if module["status"] == "scaffolded"),
-            None,
-        )
-        if scaffolded is not None:
-            scaffold = self.run_cli("start", scaffolded["id"])
-            self.assertEqual(scaffold.returncode, 2)
-            self.assertIn("Activate its governed implementation batch", scaffold.stdout)
+            scaffolded = next(
+                (module for module in self.manifest["modules"] if module["status"] == "scaffolded"),
+                None,
+            )
+            if scaffolded is not None:
+                scaffold = self.run_cli_in_fixture(fixture, "start", scaffolded["id"])
+                self.assertEqual(scaffold.returncode, 2)
+                self.assertIn("Activate its governed implementation batch", scaffold.stdout)
 
     def test_refused_start_preserves_the_resumable_module(self):
         with tempfile.TemporaryDirectory() as temporary:
